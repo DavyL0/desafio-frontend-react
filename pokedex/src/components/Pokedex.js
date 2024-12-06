@@ -16,17 +16,8 @@ const Pokedex = (props) => {
     }
     return (
         <div>
-            <div className="pokedex-header">
-                <h1>Pokedex</h1>
-
-                <Pagination 
-                    page={page+1}
-                    totalPages={totalPages}
-                    onLeftClick={onLeftClickHandler}
-                    onRightClick={onRightClickHandler}
-
-                    />
-            </div>
+            
+            
             {loading ? (
                 <div>Carregando, seu Monstro...</div>):
                 (<div className="pokedex-grid"> 
@@ -39,6 +30,18 @@ const Pokedex = (props) => {
                     }
                 </div>)
                 } 
+
+<div className="pokedex-pagination">
+                <Pagination 
+                    page={page+1}
+                    totalPages={totalPages}
+                    onLeftClick={onLeftClickHandler}
+                    onRightClick={onRightClickHandler}
+
+                />
+            </div>
+
+            
         </div>
     )
 }

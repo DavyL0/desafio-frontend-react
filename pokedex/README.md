@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# **Pokédex Project**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Description**
 
-## Available Scripts
+This project is an interactive Pokédex where users can search for, view, and interact with Pokémon information, such as abilities and images. The project is built using React and utilizes an external API to fetch Pokémon data.
 
-In the project directory, you can run:
+## **Technologies Used**
+- **React**: JavaScript library for building user interfaces.
+- **CSS**: Styling of the application.
+- **PokéAPI**: API to fetch Pokémon data.
+- **React Hooks (useState, useEffect)**: For state management and handling side effects.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **Main Components**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. **Searchbar**
 
-### `npm test`
+**Description**: A search bar where the user can search for a Pokémon by its name.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Props**:
+- `onSearch`: A function that is called when the search button is clicked or the input field value changes.
 
-### `npm run build`
+**Usage Example**:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```jsx
+<Searchbar onSearch={handleSearch} />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. **Pokemon**
 
-### `npm run eject`
+**Description**: Displays the details of a Pokémon, such as its name, ID, image, and abilities.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Props:
+- pokemon: An object containing the information of a Pokémon.
+**Usage Example:**
+```jsx
+<Pokemon pokemon={pokemonData} />
+```
+Logic: This component checks if the Pokémon image exists. If not, it shows a fallback with the initials of the Pokémon's name.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. AvatarFallback
+**Description**: Displays the initials of a Pokémon inside a colored circle when no image is available.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Props:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- name: The name of the Pokémon used to generate the initials.
+- imageUrl: The URL of the Pokémon's image.
 
-## Learn More
+**Usage Example:**
+```jsx
+<AvatarFallback name={pokemon.name} imageUrl={pokemon.sprites.front_default} />
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. Pagination Buttons
+Description: Navigation buttons to go forward or backward through the pages of results.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Classes:
 
-### Code Splitting
+- pagination-left-button: Button for going back to the previous page.
+- pagination-right-button: Button for going to the next page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Directory Structure
 
-### Analyzing the Bundle Size
+```jsx
+/src
+  /components
+    AvatarFallback.js   # Fallback image component
+    Pokemon.js          # Component to display Pokémon details
+    Searchbar.js        # Search bar component
+    Pagination.js       # Pagination buttons component
+  App.js                # Main component
+  index.js              # Entry point of the application
+  style.css             # Global styles
+```
+## Setup Instructions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**1. Clone the repository:**
 
-### Making a Progressive Web App
+Clone the repository using the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+git clone https://github.com/DavyL0/desafio-frontend-react.git
+```
 
-### Advanced Configuration
+**2. Install dependencies:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Navigate to the project directory and install the dependencies:
 
-### Deployment
+```bash
+cd pokedex
+npm install
+```
+**3. Run the project:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Start the development server:
 
-### `npm run build` fails to minify
+```bash
+npm start
+```
+The application will be available at http://localhost:3000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Features
+
+- Pokémon Search: Users can search for a Pokémon by name and view detailed information about it.
+- Image Fallback: If the Pokémon's image is not available, the initials of the Pokémon's name are shown as a fallback.
+- Pagination: Navigate through the list of Pokémon with previous and next buttons.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+### **Explanation**
+
+- **Description**: This section explains what the project is and its main features.
+- **Technologies Used**: Lists all the technologies and tools used to build the project.
+- **Main Components**: Describes the key React components in the application.
+- **Directory Structure**: Shows how the files are organized in the project.
+- **Setup Instructions**: Provides step-by-step instructions for setting up the project on your local machine.
+- **Features**: Lists the main functionalities of the application.
+- **Contributing**: Provides guidelines on how to contribute to the project.
+- **License**: If you plan to make the project open source, you can add a license. In this example, I used the MIT License.
+
+Feel free to adapt the content as needed and replace any placeholder (like `https://github.com/DavyL0/desafio-frontend-react.git`) with the actual repository URL. This documentation can be saved as `README.md` in the root directory of your project.

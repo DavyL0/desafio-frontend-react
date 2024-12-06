@@ -1,39 +1,48 @@
 import React from "react";
+import AvatarFallback from "./AvatarFallback";
 
 const Pokemon = (props) => {
-    const {pokemon} = props
-    const onHeartClick = () =>{
-        console.log("pode favoritar")
+  const { pokemon } = props;
+
+
+  const getPokemonAbilities = () => {
+    if (!pokemon.abilities || pokemon.abilities.length === 0) {
+      return <div>Nenhuma habilidade encontrada.</div>;
     }
-    const heart = "❤️"
-    return (
-        <div className="pokemon-card">
-            <div className="pokemon-image-container">
-                <img alt={pokemon.name} src={pokemon.sprites.front_default} className="pokemon-image" />
-            </div>
 
-            <div className="card-body">
-                <div className="card-top">
-                    <h3>{pokemon.name}</h3>
-                    <div>#{pokemon.id}</div>
-                </div>
+    return pokemon.abilities.map((abilityObj, index) => (
+      <div key={index} className="pokemon-ability-text">
+        {abilityObj.ability.name}
+      </div>
+    ));
+  };
 
-                <div className="card-bottom">
-                    <div className="pokemon-type">
-                        {pokemon.types.map((type, index)=> {
-                            return(
-                                <div key={index} className="pokemon-type-text">
-                                    {type.type.name}
-                                </div>
-                            )
-                        })}
-                    </div>
-                    <button className="pokemon-heart-btn" onClick={onHeartClick}>
-                        {heart}
-                    </button>
-                </div>
-            </div>
-        </div>)
-}
+  return (
+    <div className="pokemon-card">
+      <div className="pokemon-image-container">
+        {pokemon.sprites.front_default ? (
+          <img
+            alt={pokemon.name}
+            src={pokemon.sprites.front_default}
+            className="pokemon-image"
+          />
+        ) : (
+          <AvatarFallback name={pokemon.name}/>
+        )}
+      </div>
 
-export default Pokemon
+      <div className="card-body">
+        <div className="card-top">
+          <h3>{pokemon.name}</h3>
+          <div>#{pokemon.id}</div>
+        </div>
+
+        <div className="card-bottom">
+          <div className="pokemon-ability">{getPokemonAbilities()}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Pokemon;

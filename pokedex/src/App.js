@@ -15,7 +15,7 @@ function App() {
   const [notFound, setNotFound] = useState(false)
   const [pokemons, setPokemons] = useState([])
 
-  const itensPerPage = 25
+  const itensPerPage = 24
 
   const onSearchHandler = async (pokemon) => {
     if(!pokemon){
@@ -75,7 +75,6 @@ function App() {
       totalPages={totalPages}
       setPage={setPage}
       />}
-
       
     </div>
   );
